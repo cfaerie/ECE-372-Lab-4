@@ -1,27 +1,24 @@
 # ECE 372 Lab 4
 Authors: Rachel & Ali
 
-The objective of the lab is to guide students into figuring out how to use branching instructions
-in assembly language.
+The onjective is to have students figure out how to access the buttons and switches that are on the 
+DRAGON12 development board. 
 
-Program prompts the user to "Make a selection: V,W,A,D,4,2". When the selection is made, there is a 
-subroutine case to handle each character pressed. If non of those characters is pressed, the program
-will output the same prompt line until a valid character is entered.
+The program will receive inputs from four pushbuttons and five switches located on the development
+board under PORT H (PORTH). THe program will use the 8-bit LED output on the board, as well as a
+green and red LED output. The push buttons are PH0, PH1, PH2, and PH3. The last four red DIP switches
+on the DRAGON12 board must be in the UP position for the push buttons to work.
 
-There are six cases total. The VCASE and WCASE prompt the user to enter an 8-bit value as a single 
-character. 
+There are four scenarios that the program must handle:
 
-VCASE stores the 8-bit value to the variable OP1. 
+Scenario 1: User presses PH3: The program should display a random value to the 8-bit LED output on the
+development board.
 
-WCASE stores the 8-bit values to OP2.
+Scenario 2: User presses PH2: The program should logically shift the 8-bit LED's to the left.
 
-ACASE will add the values stores in OP1 and OP2, outputting the SUM and printing a visual representation,
-e.g. $33 + $34 = $67.
+Scenario 3: User presses PH1: The program should arithmetically shift the 8-bit LED's right.
 
-DCASE converts the contents of OP1 to decimal, and then prints it in hex and 
-decimal, e.g 1B 27. 
-
-FOURCASE prints the contents of OP1 and OP2 to look like a single address,
-e.g. If OP1 is $2A and OP2 is $3B it prints $2A3B. 
-
-TWOCASE uses the X register to store the address of OP1. Using that address, it will use left bit shifting to double the value in OP1 and store the new value in OP1.
+Scenario 4: User presses PH0: The program implements 5-input majority voting logic. The program will
+only read the five leftmost DIP switch bits as an input. If the number of '1' bits is more than the
+number of bits set to '0', then a green LED will be lit, declaring a majority of '1' bits. Otherwise,
+the red LED will be lit.
